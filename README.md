@@ -27,7 +27,7 @@ This tool allows students/researchers to upload lecture notes (PDFs) into a **se
 You don't need to install anything on your computer. Run it directly in the cloud:
 
 1.  **Open the Notebook:**
-    [![](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/YOUR_USERNAME/Personal-AI-Teaching-Assistant/blob/main/Personal_AI_TA.ipynb)
+    [![](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/Lilo-Denise/Personal-AI-Teaching-Assistant/blob/main/Personal_AI_Teaching_Assistant.ipynb)
     *(Click the badge above)*
 
 2.  **Setup Environment:**
