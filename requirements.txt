@@ -1,0 +1,12 @@
+langchain
+langchain-community
+chromadb
+gradio
+pypdf
+torch
+transformers
+accelerate
+bitsandbytes
+sentence-transformers
+pillow
+pdf2image
