@@ -10,3 +10,4 @@ bitsandbytes
 sentence-transformers
 pillow
 pdf2image
+pandas
