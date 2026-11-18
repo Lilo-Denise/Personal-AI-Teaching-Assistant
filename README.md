@@ -29,8 +29,7 @@ PDF → text + image captions → chunks (LangChain) → embeddings (FastEmbed) 
 
 ## Files
 
-- `Personal_AI_Teaching_Assistant_revised.ipynb`: current version
-- `Personal_AI_Teaching_Assistant.ipynb`: first version
+- `Personal_AI_Teaching_Assistant_revised.ipynb`: the notebook (final version, December 2025)
 - `requirements.txt`: Python dependencies
 
 ## Limits
