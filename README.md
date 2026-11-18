@@ -1,49 +1,38 @@
-# Personal AI Teaching Assistant 🎓
+# Personal AI Teaching Assistant
 
-> A local, multimodal RAG-based teaching assistant that answers questions strictly from lecture slides with accurate citations.
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Lilo-Denise/Personal-AI-Teaching-Assistant/blob/main/Personal_AI_Teaching_Assistant_revised.ipynb)
 
-![Project Screenshot](screenshots/main_ui.png)
-*(Replace this path with your actual screenshot filename)*
+A study assistant that answers questions from your own lecture PDFs and shows which page each answer came from. Built as a Yale SOM course project in Fall 2025.
 
-## 📖 Project Overview
-This tool allows students/researchers to upload lecture notes (PDFs) into a **secure local knowledge base**. It uses a Local LLM (Qwen2-1.5B) to generate answers grounded in the uploaded materials, ensuring zero hallucinations.
+## Why I built it
 
-**Key Features:**
-* **Obsidian UI:** A clean, high-contrast dark mode interface designed for focus.
-* **Privacy First:** Runs entirely on Google Colab's GPU; data is stored in your private Google Drive.
-* **Strict Citations:** Every answer includes inline citations (e.g., `[Page 5]`) and a visual source list.
-* **Multimodal Processing:** Capable of processing PDF text and visual descriptions.
-* **Knowledge Management:** Upload, view, and delete files from the vector database.
+When revising, I wanted answers grounded in the course material itself, with a page reference I could check, instead of a general chatbot answer.
 
-## 🛠️ Tech Stack
-* **Frontend:** Gradio (Custom CSS for Dark Mode)
-* **LLM:** Qwen2-1.5B-Instruct (via HuggingFace)
-* **RAG Engine:** LangChain + ChromaDB
-* **Embeddings:** Sentence-Transformers (`all-MiniLM-L6-v2`)
-* **Storage:** Google Drive Integration
+## What it does
 
-## 🚀 How to Run (Easy)
+- Upload lecture PDFs; they are stored in your own Google Drive.
+- Reads both the text and the slide images (an image-captioning model describes visuals).
+- Splits the material into chunks and stores them in a local vector database.
+- Answers a question using only the retrieved chunks, with the source file and page number.
+- Lets you view and delete uploaded files; the database refreshes automatically.
 
-You don't need to install anything on your computer. Run it directly in the cloud:
+## How it works
 
-1.  **Open the Notebook:**
-    [![](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/Lilo-Denise/Personal-AI-Teaching-Assistant/blob/main/Personal_AI_Teaching_Assistant.ipynb)
-    *(Click the badge above)*
+PDF → text + image captions → chunks (LangChain) → embeddings (FastEmbed) → ChromaDB → retrieve top chunks → Qwen2-1.5B-Instruct answers with citations → Gradio web interface
 
-2.  **Setup Environment:**
-    * In Colab, go to `Runtime` -> `Change runtime type` -> Select **T4 GPU**.
-    * Click `Runtime` -> `Run all`.
+## Run it
 
-3.  **Authorize:**
-    * Allow Google Drive mounting when prompted (to save your knowledge base).
+1. Open `Personal_AI_Teaching_Assistant_revised.ipynb` in Google Colab (button above).
+2. Set Runtime → Change runtime type → T4 GPU, then Run all.
+3. Allow Google Drive access when asked.
+4. Open the Gradio link printed in the last cell.
 
-4.  **Launch:**
-    * Scroll to the bottom cell and click the **Gradio Public Link** (e.g., `https://xxxx.gradio.live`).
+## Files
 
-## 📂 File Structure
-* `Personal_AI_TA.ipynb`: The core source code.
-* `data/`: Sample lecture slides for testing.
-* `requirements.txt`: List of Python dependencies.
+- `Personal_AI_Teaching_Assistant_revised.ipynb`: current version
+- `Personal_AI_Teaching_Assistant.ipynb`: first version
+- `requirements.txt`: Python dependencies
 
----
-*Final Project | Fall 2025*
+## Limits
+
+It runs a small model on a free Colab GPU, so answers are short and depend on how well the slides are retrieved. It is a course prototype, not a production tool.
